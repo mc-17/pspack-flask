@@ -10,8 +10,9 @@ This is just a repacked psOOBs4, as a flask package with the addition of automat
 
 ## Setup:
 
-1. Activate venv `venv/bin/python3 app.py --host=0.0.0.0 --port=1337`
-2. Navigate to port 1337 on your host IP on your PS4
-3. Same as psOOBs4
-4. GoldenHEN should be sent once the server detects success via log messages
+1. Install requirements `python3 -m pip install -r requirements.txt`
+2. Run app `python3 app.py --host=0.0.0.0 --port=1337`
+3. Navigate to port 1337 on your host IP on your PS4
+4. Same as psOOBs4
+5. GoldHEN should be sent once the server detects success via log messages
 
