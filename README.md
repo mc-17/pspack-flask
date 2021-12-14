@@ -16,3 +16,8 @@ This is just a repacked psOOBs4, as a flask package with the addition of automat
 4. Same as psOOBs4
 5. GoldHEN should be sent once the server detects success via log messages
 
+
+## Help! It doesn't work on my machine
+
+1. Try again
+2. If you're not running 9.00, the exploit won't run. You'll need to modify [the template](https://github.com/mc-17/pspack-flask/blob/main/templates/index.html#L70) to match your version, or just remove the if/else
