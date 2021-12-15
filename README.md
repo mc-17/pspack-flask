@@ -12,11 +12,14 @@ All credit to the team behind pOOBs4
 
 ## Setup:
 
-1. Install requirements `python3 -m pip install -r requirements.txt`
-2. Run app `python3 app.py`. Might need to run as root to bind to port 1337
-3. Navigate to port 1337 on your host IP on your PS4
-4. Same as psOOBs4
-5. GoldHEN should be sent once the server detects success via log messages
+1. Download [Python](https://www.python.org/downloads/) and install it, ideally 3.10
+2. Install flask `python3 -m pip install -r requirements.txt
+
+## Exploiting
+1. Run app `python3 app.py`. Might need to run as root to bind to port 1337
+2. Navigate to port 1337 on your host IP on your PS4
+3. Same as psOOBs4
+4. GoldHEN should be sent once the server detects success via log messages
 
 
 ## Help! It doesn't work on my machine
