@@ -10,12 +10,13 @@ This is just a repacked psOOBs4, as a flask package with the addition of automat
 
 All credit to the team behind pOOBs4
 
-## Setup:
+## Setup
 
 1. Download [Python](https://www.python.org/downloads/) and install it, ideally 3.10
-2. Install flask `python3 -m pip install -r requirements.txt
+2. Install flask `python3 -m pip install -r requirements.txt`
 
 ## Exploiting
+
 1. Run app `python3 app.py`. Might need to run as root to bind to port 1337
 2. Navigate to port 1337 on your host IP on your PS4
 3. Same as psOOBs4
