@@ -9,11 +9,12 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     ua = request.headers.get("User-Agent", None)
-
-    if ua:
-        ua_part = ua[ua.index("PlayStation 4/") + len("PlayStation 4/"):]
-        ua_part = ua_part[:ua_part.index(")")]
-    else:
+    try:
+        if ua:
+            ua_part = ua[ua.index("PlayStation 4/") + len("PlayStation 4/"):]
+            ua_part = ua_part[:ua_part.index(")")]
+    except ValueError:
+        print("Not PS4")
         ua_part = ua
 
     return render_template("index.html", version=ua_part)
@@ -45,7 +46,4 @@ def add_header(r):
 
 
 if __name__ == '__main__':
-    app.add_url_rule(app.static_url_path + '/<path:filename>',
-                     endpoint='static',
-                     view_func=app.send_static_file)
-    app.run(host="0.0.0.0")
+    app.run(host='0.0.0.0', port=1337)
