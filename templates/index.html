@@ -4,24 +4,6 @@
     <title>pspack-flask</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        body {
-            background-color: #242629;
-        }
-
-        .loader {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            margin: -75px 0 0 -75px;
-
-            border: 10px solid #1f1e1e;
-            border-radius: 50%;
-            border-top: 10px solid #044595;
-            border-left: 10px solid #044595;
-            width: 120px;
-            height: 120px;
-            animation: spin 1s linear infinite;
-        }
 
         @keyframes spin {
             0% {
@@ -31,6 +13,27 @@
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        body {
+            background-color:black;
+        }
+
+        img, .select, .go {
+            margin: 0 auto;
+            display: table;
+
+        }
+
+        #spinner {
+            display: none;
+        }
+
+        .select, .go {
+            margin-top:1vh;
+            background-color: black;
+            font-size: 5vh;
+            color: white;
         }
 
         .info {
@@ -51,6 +54,11 @@
             font-size: 15px;
             color: #2F3335;
         }
+
+        #go {
+            min-width:60%;
+        }
+
     </style>
     <script>
         function allset() {
@@ -61,6 +69,25 @@
         function awaitpl() {
             document.getElementById("loader").style.display = "none";
             document.getElementById("awaiting").style.display = "block";
+        }
+
+        function expect(msg)
+        {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', './expect/' + encodeURIComponent(msg), true);
+            xhr.onerror = function () {
+                    alert("Failed to log: message" + msg)
+            }
+            xhr.send();
+        }
+
+        function trigger() {
+            expect(document.getElementById("payload").selectedOptions[0].value);
+            {% if version == "9.00" %}
+                document.getElementById("config").style.display = "none";
+                document.getElementById("spinner").style.display = "block";
+                setTimeout(poc, 1500);
+            {% endif %}
         }
     </script>
     <script src="{{url_for('static', filename='logging.js')}}"></script>
@@ -76,7 +103,20 @@
 
 </html>
 
-<div id="loader" class="loader"></div>
+{% if payloads %}
+<div id="config" class="config">
+    <select name="payload" id="payload" class="select">
+        {% for pl in payloads %}
+            <option value="{{pl}}">{{pl}}</option>
+        {% endfor %}
+    </select>
+    <input type="button" value="Hax" class="go" onclick="trigger()"/>
+</div>
+{% endif %}
+
+<div id="loader" class="loader">
+    <img id="spinner" src="{{url_for('static', filename='img/loading.gif')}}"/>
+    </div>
     <div id="awaiting" class="info" style="display:none;">
         Awaiting Payload...
         <br />
@@ -87,7 +127,4 @@
         You're all set!
     </div>
 
-{% if version == "9.00" %}
-    <body onload="setTimeout(poc, 1500);">
-    </body>
-{% endif %}
+
