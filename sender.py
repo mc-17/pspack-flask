@@ -1,4 +1,5 @@
 import socket
+import sys
 import time
 
 
@@ -14,7 +15,18 @@ def send(ip: str, port: int, file: str) -> None:
                     client.sendfile(fp)
             finally:
                 client.close()
+                break
         except (ConnectionRefusedError, OSError):
             # Sometimes the socket isn't bound :(
             time.sleep(1)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) == 4:
+        file, port, ip = sys.argv[1:]
+        port = int(port)
+        send(ip, port, file)
+
+    else:
+        print("usage: <file> <port> <ip>")
 
