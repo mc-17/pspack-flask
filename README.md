@@ -23,6 +23,10 @@ All credit to the team behind pOOBs4
 4. Same as psOOBs4
 5. GoldHEN should be sent once the server detects success via log messages
 
+## Running in Docker
+
+1. Run `docker build -t pspack-flask .`
+2. Run `docker run --name pspack -d -p 1337:1337 pspack-flask`
 
 ## Help! It doesn't work on my machine
 
