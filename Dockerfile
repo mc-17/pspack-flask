@@ -4,8 +4,10 @@ WORKDIR /opt
 
 EXPOSE 1337
 
-COPY . /opt/
+COPY requirements.txt /opt/
 
-RUN pip3 install -r requirements.txt
+RUN python3 -m pip install -r requirements.txt
+
+COPY . /opt/
 
 CMD python3 /opt/app.py
