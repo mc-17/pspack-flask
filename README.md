@@ -28,6 +28,8 @@ All credit to the team behind pOOBs4
 1. Run `docker build -t pspack-flask .`
 2. Run `docker run --name pspack -d -p 1337:1337 pspack-flask`
 
+If running behind a reverse proxy, set `CONSOLE_IP` in `Dockerfile` to direct the payload
+
 ## Help! It doesn't work on my machine
 
 1. Try again
