@@ -5,9 +5,6 @@ pOOBs4 PS4 exploit for v9.0 + automatic gold hen
  
 This is just a repacked psOOBs4, as a flask package with the addition of automatic sending of GoldHEN. Some other small changes:
 
-- Some magic numbers have been renamed (never looked at a PS4 bug before, and wanted to know wtf was going on)
-- Some additional logging via HTTP requests (not massively useful as can't do a lot in critical section, but useful for kicking off goldenhen send)
-
 All credit to the team behind pOOBs4
 
 ## Setup
