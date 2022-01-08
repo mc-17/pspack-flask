@@ -9,11 +9,19 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     ua = request.headers.get("User-Agent", None)
-    try:
-        if ua:
+    ua_part = None
+    if ua:
+        if "PlayStation 4/" in ua:
             ua_part = ua[ua.index("PlayStation 4/") + len("PlayStation 4/"):]
+        elif "Playstation 4/" in ua:
+            ua_part = ua[ua.index("Playstation 4/") + len("Playstation 4/"):]
+
+        if ")" in ua_part:
             ua_part = ua_part[:ua_part.index(")")]
-    except ValueError:
+        else:
+            ua_part = None
+
+    if not ua_part:
         print("Not PS4")
         ua_part = ua
 
