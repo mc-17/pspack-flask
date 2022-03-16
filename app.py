@@ -1,4 +1,5 @@
 import os
+import glob
 
 from flask import Flask, render_template, request
 from urllib.parse import unquote_plus
@@ -34,7 +35,11 @@ def log(msg):
     if "done" in msg or "already" in msg:
         # success message, send HEN
         print(f"Sending golden hen to {request.remote_addr}")
-        send(request.remote_addr, 9020, "payload/goldhen_2.1.2_900.bin")
+
+        # find last file in folder
+        files_path = sorted(glob.glob("GoldHEN/*.bin"))
+        last_file = files_path[-1]
+        send(request.remote_addr, 9020, last_file)
 
     print(msg)
     return "OK"
