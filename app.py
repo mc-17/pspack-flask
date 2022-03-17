@@ -1,9 +1,10 @@
 import os
-import glob
+import get_last
 
 from flask import Flask, render_template, request
 from urllib.parse import unquote_plus
 from sender import send
+
 app = Flask(__name__)
 
 
@@ -36,10 +37,8 @@ def log(msg):
         # success message, send HEN
         print(f"Sending golden hen to {request.remote_addr}")
 
-        # find last file in folder
-        files_path = sorted(glob.glob("GoldHEN/*.bin"))
-        last_file = files_path[-1]
-        send(request.remote_addr, 9020, last_file)
+        payload = "payload/%s" % os.path.basename(get_last())
+        send(request.remote_addr, 9020, payload)
 
     print(msg)
     return "OK"

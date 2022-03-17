@@ -8,6 +8,10 @@ COPY requirements.txt /opt/
 
 RUN python3 -m pip install -r requirements.txt
 
+RUN git submodule update --remote
+
+RUN python3 get_last.py
+
 COPY . /opt/
 
 CMD python3 /opt/app.py
