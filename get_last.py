@@ -10,3 +10,4 @@ def get_last():
 
 os.mkdir("payload")
 shutil.copy(get_last(), "payload/%s" % os.path.basename(get_last()))
+shutil.rmtree("GoldHEN")
