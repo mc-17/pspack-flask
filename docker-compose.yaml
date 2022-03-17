@@ -1,0 +1,10 @@
+version: "2"
+services:
+  pspack-flask:
+  # network_mode: bridge
+    build: .
+    image: pspack-flask
+    container_name: pspack-flask
+    ports:
+      - 1337:1337
+    restart: unless-stopped
