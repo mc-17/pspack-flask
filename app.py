@@ -1,9 +1,9 @@
 import os
-import get_last
 
 from flask import Flask, render_template, request
 from urllib.parse import unquote_plus
 from sender import send
+from get_last import get_last
 
 app = Flask(__name__)
 
