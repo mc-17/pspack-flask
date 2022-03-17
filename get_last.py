@@ -8,6 +8,8 @@ def get_last():
     last_file = files_path[-1]
     return last_file
 
-os.mkdir("payload")
-shutil.copy(get_last(), "payload/%s" % os.path.basename(get_last()))
-shutil.rmtree("GoldHEN")
+if __name__ == '__main__':
+    os.mkdir("payload")
+    shutil.copy(get_last(), "payload/%s" % os.path.basename(get_last()))
+    shutil.rmtree("GoldHEN")
+    
