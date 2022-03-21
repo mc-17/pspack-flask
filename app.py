@@ -77,12 +77,13 @@ def index():
 @app.route("/log/<msg>")
 def log(msg):
     msg = unquote_plus(msg)
+    print(msg)
+
     if "done" in msg:
         # success message, send HEN
         print(f"Sending golden hen to {request.remote_addr}")
         send(request.remote_addr, 9020, "payload/goldhen.bin")
 
-    print(msg)
     return "OK"
 
 
