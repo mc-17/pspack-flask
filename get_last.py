@@ -2,7 +2,7 @@ import os
 import glob
 import shutil
 
-def get_last(folder):
+def get_last(folder=""):
     # find last file in folder
     if folder:
       files_path = sorted(glob.glob("{0}/*.bin".format(folder)))
