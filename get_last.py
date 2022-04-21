@@ -2,9 +2,12 @@ import os
 import glob
 import shutil
 
-def get_last():
+def get_last(folder):
     # find last file in folder
-    files_path = sorted(glob.glob("GoldHEN/*.bin"))
+    if folder:
+      files_path = sorted(glob.glob("{0}/*.bin".format(folder)))
+    else:
+      files_path = sorted(glob.glob("GoldHEN/*.bin"))
     last_file = files_path[-1]
     return last_file
 

@@ -37,7 +37,7 @@ def log(msg):
         # success message, send HEN
         print(f"Sending golden hen to {request.remote_addr}")
 
-        payload = "payload/%s" % os.path.basename(get_last())
+        payload = get_last("payload")
         send(request.remote_addr, 9020, payload)
 
     print(msg)
