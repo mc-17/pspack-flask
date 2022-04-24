@@ -1,0 +1,3 @@
+[submodule "GoldHEN"]
+	path = GoldHEN
+	url = https://github.com/GoldHEN/GoldHEN.git

@@ -25,6 +25,11 @@ All credit to the team behind pOOBs4
 1. Run `docker build -t pspack-flask .`
 2. Run `docker run --name pspack -d -p 1337:1337 pspack-flask`
 
+or
+
+1. Run `docker-compose build`
+2. Run `docker-compose up -d`
+
 ## Help! It doesn't work on my machine
 
 1. Try again

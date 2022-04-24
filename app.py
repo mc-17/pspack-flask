@@ -3,6 +3,8 @@ import os
 from flask import Flask, render_template, request
 from urllib.parse import unquote_plus
 from sender import send
+from get_last import get_last
+
 app = Flask(__name__)
 
 
@@ -34,7 +36,9 @@ def log(msg):
     if "done" in msg or "already" in msg:
         # success message, send HEN
         print(f"Sending golden hen to {request.remote_addr}")
-        send(request.remote_addr, 9020, "payload/goldhen_2.2_900.bin")
+
+        payload = get_last("payload")
+        send(request.remote_addr, 9020, payload)
 
     print(msg)
     return "OK"
