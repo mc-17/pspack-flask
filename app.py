@@ -20,6 +20,8 @@ def get_latest_release(output_dir: str = ""):
         if output_dir and not os.path.isdir(output_dir):
             os.makedirs(output_dir, mode=0o755)
 
+        file_version = os.path.join(output_dir, "VERSION")
+
         releases_url = "https://api.github.com/repos/GoldHEN/GoldHEN/releases"
         releases = sorted(requests.get(releases_url).json(),
                           key=lambda rls: LooseVersion(rls.get("tag_name", 0)),
@@ -34,6 +36,13 @@ def get_latest_release(output_dir: str = ""):
         if not latest_release or not version:
             raise ValueError("Error getting release URL - unexpected release format!")
 
+        if os.path.isfile(file_version):
+            with open(file_version) as fp:
+                have_version = LooseVersion(fp.read())
+                if have_version >= version:
+                    print(f"Version on disk ({have_version}) equal to or newer to latest ({version}")
+                    return
+
         with io.BytesIO(requests.get(latest_release).content) as zip_data:
             with zipfile.ZipFile(zip_data) as zf:
                 for zip_entry in zf.filelist:
@@ -44,7 +53,7 @@ def get_latest_release(output_dir: str = ""):
                                 hen_write.write(hen_read.read())
                                 print(f"Downloaded!")
 
-                                with open(os.path.join(output_dir, "VERSION"), "w+") as fp:
+                                with open(file_version, "w+") as fp:
                                     fp.write(version)
 
                                 break
