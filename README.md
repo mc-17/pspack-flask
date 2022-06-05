@@ -1,5 +1,5 @@
 # pspack-flask
-pOOBs4 PS4 exploit for v9.0 + automatic gold hen
+pOOBs4 PS4 exploit for v9.0 + automatic gold hen download + deployment
  
  ## About
  
@@ -15,10 +15,11 @@ All credit to the team behind pOOBs4
 ## Exploiting
 
 1. Run app `python3 app.py`. Might need to run as root to bind to port 1337
-2. In the command line the IP address to navigate to will be printed e.g `* Running on http://192.168.1.200:1337/ (Press CTRL+C to quit)`
-3. Navigate to port 1337 on that IP on your PS4
-4. Same as psOOBs4
-5. GoldHEN should be sent once the server detects success via log messages
+2. GoldHEN will be downloaded automatically if out of date
+3. In the command line the IP address to navigate to will be printed e.g `* Running on http://192.168.1.200:1337/ (Press CTRL+C to quit)`
+4. Navigate to port 1337 on that IP on your PS4
+5. Same as psOOBs4
+6. GoldHEN should be sent once the server detects success via log messages
 
 ## Running in Docker
 
