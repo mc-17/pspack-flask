@@ -15,5 +15,8 @@ def send(ip, port, file):
                 client_socket.sendfile(fp)
             print(f"Sending payload: attempt {i} succeeded!")
             break
+        except Exception as e:
+            print(f"Attempt {i} failed with exception: {str(e)}")
+            pass
         finally:
             client_socket.close()
