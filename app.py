@@ -1,5 +1,4 @@
 import argparse
-from datetime import datetime
 import os
 import time
 from distutils.version import LooseVersion
@@ -64,23 +63,11 @@ def get_latest_release(output_dir: str = ""):
 @app.route('/')
 def index():
     ua = request.headers.get("User-Agent", None)
-    ua_part = None
-    if ua:
-        if "PlayStation 4/" in ua:
-            ua_part = ua[ua.index("PlayStation 4/") + len("PlayStation 4/"):]
-        elif "Playstation 4/" in ua:
-            ua_part = ua[ua.index("Playstation 4/") + len("Playstation 4/"):]
 
-        if ")" in ua_part:
-            ua_part = ua_part[:ua_part.index(")")]
-        else:
-            ua_part = None
-
-    if not ua_part:
+    if not ua or "playstation" not in ua.lower():
         print("Not PS4")
-        ua_part = ua
 
-    return render_template("index.html", version=ua_part)
+    return render_template("index.html")
 
 
 @app.route("/log/<msg>")
